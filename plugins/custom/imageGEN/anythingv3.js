@@ -1,7 +1,7 @@
 exports.run = {
   usage: ['imagine2'],
   use: 'prompt',
-  category: 'img-ai-gen',
+  category: 'img-gen',
   async: async (m, {
      client,
      text,
