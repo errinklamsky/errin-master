@@ -102,6 +102,7 @@ dist
 # Ignored component
 session/
 temp/
+.env
 data.*
 yarn.*
 package-lock.*
