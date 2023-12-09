@@ -15,7 +15,7 @@ exports.run = {
                   messages: [
                      {
                         'role': 'system',
-                        'content': require('fs').readFileSync('./media/prompt1.txt', 'utf-8')
+                        'content': require('fs').readFileSync('./media/prompt.txt', 'utf-8')
                      },
                      {
                         'role': 'user',
