@@ -1,6 +1,6 @@
 exports.run = {
   usage: ['ppcouple'],
-  hidden: ['ppcp'],
+  hidden: ['art'],
   category: 'utilities',
   async: async (m, {
      client,
