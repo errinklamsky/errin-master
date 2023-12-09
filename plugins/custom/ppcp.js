@@ -1,7 +1,7 @@
 exports.run = {
   usage: ['ppcouple'],
-  hidden: ['art'],
-  category: 'utilities',
+  hidden: ['ppcp'],
+  category: 'art',
   async: async (m, {
      client,
      female,
