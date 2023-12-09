@@ -1,7 +1,7 @@
 exports.run = {
   usage: ['absolute'],
   use: 'prompt',
-  category: 'img-gen',
+  category: 'art',
   async: async (m, {
      client,
      text,
