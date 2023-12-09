@@ -28,9 +28,11 @@ exports.run = {
                   max_tokens: 300
                })
                try{
-                  //let speach = `https://api.yanzbotz.my.id/api/tts/Gadis?query=${encodeURIComponent(json.choices[0].message.content.trim())}`
-                  let speach = `https://api.yanzbotz.my.id/api/tts/ttstiktok?text=${encodeURIComponent(json.choices[0].message.content.trim())}&id=id_001`
-                  client.reply(m.chat, json.choices[0].message.content.trim(), m)
+                   //let speach = `https://api.yanzbotz.my.id/api/tts/janie?query=${encodeURIComponent(json.choices[0].message.content.trim())}`
+                   //let speach = `https://api.yanzbotz.my.id/api/tts/siti?query=${encodeURIComponent(json.choices[0].message.content.trim())}`
+                   //let speach = `https://api.yanzbotz.my.id/api/tts/tuti?query=${encodeURIComponent(json.choices[0].message.content.trim())}`
+                   let speach = `https://api.yanzbotz.my.id/api/tts/Gadis?query=${encodeURIComponent(json.choices[0].message.content.trim())}`
+                   //let speach = `https://api.yanzbotz.my.id/api/tts/ttstiktok?text=${encodeURIComponent(json.choices[0].message.content.trim())}&id=id_001`                  client.reply(m.chat, json.choices[0].message.content.trim(), m)
                   client.sendFile(m.chat, await Func.fetchBuffer(speach), 'audio.mp3', '', m, {
                      ptt: true
                   })
