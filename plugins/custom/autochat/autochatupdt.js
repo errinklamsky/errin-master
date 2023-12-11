@@ -1,1 +1,65 @@
-function _0x84d5(){const _0x5a0f85=['gpt-3.5-turbo','OPENAI_API_KEY','writeFile','jsonFormat','28319448UaHyrg','speech','11622JEfcLR','8376802nkWdQP','2704XBIxty','audio.mp3','create','key','10767910GpbGhb','6PEAmfZ','116tIsiiP','./media/prompt.txt','system','nova','env','reply','265116CueVZd','readFileSync','filename','message','from','completions','25272JDBjeP','sendReact','audio','log','content','280926kVRztm','openai','45aeFWBp','chat','unlinkSync','trim','run','choices','11XUcvCw','arrayBuffer'];_0x84d5=function(){return _0x5a0f85;};return _0x84d5();}const _0x56a95c=_0x4e67;(function(_0x106b42,_0x274fb5){const _0x1f4e82=_0x4e67,_0x39430f=_0x106b42();while(!![]){try{const _0x2eb9e1=parseInt(_0x1f4e82(0x1bc))/0x1+-parseInt(_0x1f4e82(0x1ab))/0x2*(-parseInt(_0x1f4e82(0x1a3))/0x3)+-parseInt(_0x1f4e82(0x1b1))/0x4*(parseInt(_0x1f4e82(0x1be))/0x5)+parseInt(_0x1f4e82(0x1aa))/0x6*(-parseInt(_0x1f4e82(0x1a4))/0x7)+-parseInt(_0x1f4e82(0x1a5))/0x8*(-parseInt(_0x1f4e82(0x1b7))/0x9)+-parseInt(_0x1f4e82(0x1a9))/0xa*(parseInt(_0x1f4e82(0x1c4))/0xb)+parseInt(_0x1f4e82(0x1ca))/0xc;if(_0x2eb9e1===_0x274fb5)break;else _0x39430f['push'](_0x39430f['shift']());}catch(_0x512dec){_0x39430f['push'](_0x39430f['shift']());}}}(_0x84d5,0xe6a30));const {OpenAI}=require(_0x56a95c(0x1bd)),{tmpdir}=require('os'),fs=require('fs'),path=require('path');function _0x4e67(_0x25d32b,_0x3e4a71){const _0x84d594=_0x84d5();return _0x4e67=function(_0x4e675a,_0x23f55b){_0x4e675a=_0x4e675a-0x1a3;let _0x529090=_0x84d594[_0x4e675a];return _0x529090;},_0x4e67(_0x25d32b,_0x3e4a71);}exports[_0x56a95c(0x1c2)]={'async':async(_0x328bfa,{client:_0x423262,body:_0x531ef6,Func:_0xc2a02d})=>{const _0x3dddab=_0x56a95c;try{if(/(Errin|errin)/['test'](_0x531ef6)){_0x423262[_0x3dddab(0x1b8)](_0x328bfa[_0x3dddab(0x1bf)],'🕒',_0x328bfa[_0x3dddab(0x1a8)]);const _0x58f4ac=new OpenAI({'apiKey':process[_0x3dddab(0x1af)][_0x3dddab(0x1c7)]}),_0x48638b=await _0x58f4ac[_0x3dddab(0x1bf)][_0x3dddab(0x1b6)][_0x3dddab(0x1a7)]({'messages':[{'role':_0x3dddab(0x1ad),'content':require('fs')[_0x3dddab(0x1b2)](_0x3dddab(0x1ac),'utf-8')},{'role':'user','content':_0x531ef6}],'model':_0x3dddab(0x1c6),'temperature':0.7,'top_p':0x1,'max_tokens':0xfa});_0x423262['reply'](_0x328bfa[_0x3dddab(0x1bf)],_0x48638b[_0x3dddab(0x1c3)][0x0][_0x3dddab(0x1b4)][_0x3dddab(0x1bb)][_0x3dddab(0x1c1)](),_0x328bfa);try{const _0x4bc859=path['join'](tmpdir(),_0xc2a02d[_0x3dddab(0x1b3)]('mp3')),_0x4bbc42=await _0x58f4ac[_0x3dddab(0x1b9)][_0x3dddab(0x1cb)][_0x3dddab(0x1a7)]({'model':'tts-1-hd','voice':_0x3dddab(0x1ae),'language':'id','input':_0x48638b['choices'][0x0][_0x3dddab(0x1b4)][_0x3dddab(0x1bb)][_0x3dddab(0x1c1)]()}),_0x5f4b54=Buffer[_0x3dddab(0x1b5)](await _0x4bbc42[_0x3dddab(0x1c5)]());await fs['promises'][_0x3dddab(0x1c8)](_0x4bc859,_0x5f4b54),_0x423262['sendFile'](_0x328bfa[_0x3dddab(0x1bf)],await _0xc2a02d['fetchBuffer'](_0x4bc859),_0x3dddab(0x1a6),'',_0x328bfa,{'ptt':!![]}),fs[_0x3dddab(0x1c0)](_0x4bc859);}catch(_0x1fe9d5){return console[_0x3dddab(0x1ba)](_0x1fe9d5),_0x423262['reply'](_0x328bfa[_0x3dddab(0x1bf)],_0xc2a02d[_0x3dddab(0x1c9)](_0x1fe9d5),_0x328bfa);}}}catch(_0x498815){console['log'](_0x498815),_0x423262[_0x3dddab(0x1b0)](_0x328bfa[_0x3dddab(0x1bf)],_0xc2a02d[_0x3dddab(0x1c9)](_0x498815),_0x328bfa);}},'error':![],'cache':!![],'location':__filename};
+const { OpenAI } = require('openai')
+const { tmpdir } = require('os')
+const fs = require('fs')
+const path = require('path')
+
+exports.run = {
+   async: async (m, {
+      client,
+      body,
+      Func
+   }) => {
+      try {
+          if (/(Errin|errin)/.test(body)) {
+              	client.sendReact(m.chat, '🕒', m.key)
+               const openai = new OpenAI({
+                 	apiKey: process.env.OPENAI_API_KEY
+               })
+               const json = await openai.chat.completions.create({
+                  messages: [
+                     {
+                        'role': 'system',
+                        'content': require('fs').readFileSync('./media/prompt.txt', 'utf-8')
+                     },
+                     {
+                        'role': 'user',
+                        'content': body,
+                     }
+                  ],
+                  model: 'gpt-3.5-turbo',
+                  temperature: 0.7,
+                  top_p: 1,
+                  max_tokens: 250
+               })
+               client.reply(m.chat, json.choices[0].message.content.trim(), m)
+               try {
+                  const filePath = path.join(tmpdir(), Func.filename('mp3'))
+                  const mp3 = await openai.audio.speech.create({
+                     // model tts-1-hd, tts-1
+                     model: "tts-1-hd",
+                     // voice model alloy, echo, fable, onyx, nova, and shimmer
+                     voice: "nova",
+                     language: "id",
+                     input: json.choices[0].message.content.trim(),
+                  });
+                  const buffer = Buffer.from(await mp3.arrayBuffer());
+                  await fs.promises.writeFile(filePath, buffer);
+                  client.sendFile(m.chat, await Func.fetchBuffer(filePath), 'audio.mp3', '', m, {
+                     ptt: true
+                  })
+                  fs.unlinkSync(filePath)
+               } catch (e) {
+                  console.log(e)
+                  return client.reply(m.chat, Func.jsonFormat(e), m)
+               }
+         }
+      } catch (e) {
+         console.log(e)
+         client.reply(m.chat, Func.jsonFormat(e), m)
+      }
+   },
+   error: false,
+   cache: true,
+   group: true,
+   location: __filename
+}
