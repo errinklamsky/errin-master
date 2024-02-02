@@ -6,9 +6,12 @@ exports.run = {
    async: async (m, {
       client,
       args,
+      users,
+      env,
       isPrefix,
       command,
-      Func
+      Func,
+      Scraper
    }) => {
       try {
          if (!args || !args[0]) return client.reply(m.chat, Func.example(isPrefix, command, 'https://fb.watch/7B5KBCgdO3'), m)
