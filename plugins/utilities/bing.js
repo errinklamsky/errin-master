@@ -17,7 +17,6 @@ exports.run = {
             })
             if (!json.status) return client.reply(m.chat, Func.jsonFormat(json), m)
             client.reply(m.chat, json.data.message, m)
-         }
       } catch (e) {
          client.reply(m.chat, Func.jsonFormat(e), m)
       }
