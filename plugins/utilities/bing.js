@@ -10,7 +10,6 @@ exports.run = {
       Func
    }) => {
       try {
-         if (command === 'bing') {
             if (!text) return client.reply(m.chat, Func.example(isPrefix, command, 'apa itu kucing'), m)
             client.sendReact(m.chat, '🕒', m.key)
             const json = await Api.neoxr('/bing-chat', {
