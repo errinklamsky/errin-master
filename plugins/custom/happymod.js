@@ -1,7 +1,7 @@
 exports.run = {
     usage: ['happymod'],
     use: 'prompt',
-    category: 'download',
+    category: 'downloader',
     async: async (m, {
        client,
        text,
