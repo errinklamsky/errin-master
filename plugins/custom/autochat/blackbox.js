@@ -1,5 +1,5 @@
 exports.run = {
-    usage: ['gpt4'],
+    usage: ['blackbox'],
     use: 'prompt',
     category: 'ai',
     async: async (m, {
@@ -10,9 +10,9 @@ exports.run = {
        Func
     }) => {
        try {
-          if (!text) return client.reply(m.chat, Func.example(isPrefix, command, 'hi'), m)
+          if (!text) return client.reply(m.chat, Func.example(isPrefix, command, 'bot'), m)
           client.sendReact(m.chat, '🕒', m.key)
-          let json = await Func.fetchJson(`https://aemt.me/v2/gpt4?text=${encodeURIComponent(text)}`)
+          let json = await Func.fetchJson(`https://aemt.me/blackbox?text=${encodeURIComponent(text)}`)
           let data = json.result
           client.reply(m.chat, data, m);
        } catch (e) {

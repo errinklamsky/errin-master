@@ -1,7 +1,7 @@
 exports.run = {
-    usage: ['gpt4'],
+    usage: ['happymod'],
     use: 'prompt',
-    category: 'ai',
+    category: 'download',
     async: async (m, {
        client,
        text,
@@ -10,9 +10,9 @@ exports.run = {
        Func
     }) => {
        try {
-          if (!text) return client.reply(m.chat, Func.example(isPrefix, command, 'hi'), m)
+          if (!text) return client.reply(m.chat, Func.example(isPrefix, command, 'wa mod'), m)
           client.sendReact(m.chat, '🕒', m.key)
-          let json = await Func.fetchJson(`https://aemt.me/v2/gpt4?text=${encodeURIComponent(text)}`)
+          let json = await Func.fetchJson(`https://aemt.me/happymod?query=${encodeURIComponent(text)}`)
           let data = json.result
           client.reply(m.chat, data, m);
        } catch (e) {
@@ -21,6 +21,7 @@ exports.run = {
     },
     error: false,
     limit: true,
+    premium: true,
     cache: true,
     location: __filename
  }
