@@ -1,6 +1,6 @@
 exports.run = {
    usage: ['bing'],
-   use: 'query',
+   use: 'prompt',
    category: 'ai',
    async: async (m, {
       client,
@@ -10,13 +10,11 @@ exports.run = {
       Func
    }) => {
       try {
-         if (!text) return client.reply(m.chat, Func.example(isPrefix, command, 'apa itu kucing'), m)
+         if (!text) return client.reply(m.chat, Func.example(isPrefix, command, 'hi'), m)
          client.sendReact(m.chat, '🕒', m.key)
-         const json = await Api.neoxr('/bing-chat', {
-            q: text
-         })
-         if (!json.status) return client.reply(m.chat, Func.jsonFormat(json), m)
-         client.reply(m.chat, json.data.message, m)
+         let json = await Func.fetchJson(`https://aemt.me/bingai?text=${encodeURIComponent(text)}`)
+         let data = json.result
+         client.reply(m.chat, data, m);
       } catch (e) {
          client.reply(m.chat, Func.jsonFormat(e), m)
       }
