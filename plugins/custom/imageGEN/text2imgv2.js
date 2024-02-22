@@ -1,5 +1,5 @@
 exports.run = {
-  usage: ['text2img'],
+  usage: ['text2imgv2'],
   use: 'prompt',
   category: 'art',
   async: async (m, {
@@ -12,7 +12,7 @@ exports.run = {
      try {
         if (!text) return client.reply(m.chat, Func.example(isPrefix, command, 'long hair girl'), m)
         await client.sendReact(m.chat, '🕒', m.key)
-        let result = (`https://aemt.me/v2/text2img?text=${encodeURIComponent(text)}`)
+        let result = (`https://aemt.me/v4/text2img?text=${encodeURIComponent(text)}`)
         client.sendFile(m.chat, result, 'image.png', `*Prompt = ${text}*`, m)
      } catch (e) {
         client.reply(m.chat, Func.jsonFormat(e), m)
