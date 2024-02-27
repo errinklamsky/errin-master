@@ -1,5 +1,5 @@
 exports.run = {
-   usage: ['remini'],
+   usage: ['remini', 'hd'],
    use: 'reply photo',
    category: 'utilities',
    async: async (m, {
