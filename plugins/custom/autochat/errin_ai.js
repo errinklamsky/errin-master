@@ -45,11 +45,18 @@ exports.run = {
       if (text !== '') {
         await client.sendReact(m.chat, "🕒", m.key); // Mengirim reaksi
         let json = await Func.fetchJson(`https://aemt.me/bard?text=${encodeURIComponent(text)}`);
-        //let json = await Func.fetchJson(`https://aemt.me/bingai?text=${encodeURIComponent(text)}`);
-        //let json = await Func.fetchJson(`https://api.betabotz.eu.org/api/search/bing-chat?text=${encodeURIComponent(text)}&apikey=MGgp85j5`);          
-        //let json = await Func.fetchJson(`https://aemt.me/v2/gpt4?text=${encodeURIComponent(text)}`);
         let data = json.result;
+
+        //jika data = Request failed 
+        if (data === 'Request failed!') {
+            const json = await Api.neoxr('/bard', {
+                q: text
+            })
+            client.reply(m.chat, json.data.message, m)
+        }else{
         client.reply(m.chat, data, m); // Memberikan balasan
+        }
+        
       }
     } catch (e) {
       console.log(e);
