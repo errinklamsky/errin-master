@@ -44,12 +44,16 @@ exports.run = {
       // Jika teks yang akan dibahas tidak kosong, kirim permintaan ke server untuk mendapatkan balasan
       if (text !== '') {
         await client.sendReact(m.chat, "🕒", m.key); // Mengirim reaksi
-        let json = await Func.fetchJson(`https://aemt.me/bard?text=${encodeURIComponent(text)}`);
+        //let json = await Func.fetchJson(`https://aemt.me/bard?text=${encodeURIComponent(text)}`);
         //let json = await Func.fetchJson(`https://aemt.me/bingai?text=${encodeURIComponent(text)}`);
-        //let json = await Func.fetchJson(`https://api.betabotz.eu.org/api/search/bing-chat?text=${encodeURIComponent(text)}&apikey=MGgp85j5`);          
         //let json = await Func.fetchJson(`https://aemt.me/v2/gpt4?text=${encodeURIComponent(text)}`);
-        let data = json.result;
-        client.reply(m.chat, data, m); // Memberikan balasan
+        //let data = json.result;
+        //client.reply(m.chat, data, m); // Memberikan balasan
+         const json = await Api.neoxr('/bard', {
+            q: text
+         })
+         if (!json.status) return client.reply(m.chat, Func.jsonFormat(json), m)
+         client.reply(m.chat, json.data.message, m)       
       }
     } catch (e) {
       console.log(e);

@@ -1,7 +1,7 @@
 exports.run = {
   usage: ['attp'],
   use: 'text',
-  category: 'stickers',
+  category: 'converter',
   async: async (m, {
      client,
      command,
