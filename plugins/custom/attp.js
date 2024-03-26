@@ -1,7 +1,7 @@
 exports.run = {
   usage: ['attp'],
   use: 'text',
-  category: 'text maker',
+  //category: 'text maker',
   async: async (m, {
      client,
      command,

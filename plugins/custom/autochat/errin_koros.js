@@ -1,5 +1,4 @@
 const fs = require('fs');
-
 exports.run = {
   async: async (m, { client, body, Func, Scraper }) => {
     try {
@@ -12,7 +11,7 @@ exports.run = {
       let text = "";
 
       if (/(Errin|errin)/.test(body) || isQuotedFromBot) {
-        client.sendReact(m.chat, "✔️", m.key);
+        client.sendReact(m.chat, "🥰", m.key);
         if (typeof body === "string") {
           text = prompt + body.replace(/(Errin|errin)/g, "");
         }
@@ -28,39 +27,33 @@ exports.run = {
           return;
         }
       }
-
-      // Bagian Koreksi
-      if (/image/.test(m.mtype) && body) {
-        client.sendReact(m.chat, "🌚", m.key);
-        let img = await client.downloadMediaMessage(m.msg);
-        let image = await Scraper.uploadImageV2(img);
-        const json = await Api.neoxr("/koros", {
-          image: image.data.url,
-          lang: body,
+if (/image/.test(m.mtype) && /(Errin|errin)/g.test(body)) {
+    // process koros
+    let img = await client.downloadMediaMessage(m.msg);
+    let image = await Scraper.uploadImageV2(img);
+    const json = await Api.neoxr("/koros", {
+        image: image.data.url,
+        q: body.replace(/(Errin|errin)/g, "")
+    });
+    if (!json.status) return m.reply(Func.jsonFormat(json));
+    client.reply(m.chat, json.data.description, m);
+    
+} else if (/conversation|extended/.test(m.mtype) && /(Errin|errin)/g.test(body)) {
+    // process bard
+    await client.sendReact(m.chat, "🕒", m.key);
+    let json = await Func.fetchJson(
+        `https://aemt.me/bard?text=${encodeURIComponent(body.replace(/(Errin|errin)/g, ""))}`
+    );
+    let data = json.result;
+    if (data === "Request failed!") {
+        const json = await Api.neoxr("/bard", {
+            q: prompt + body.replace(/(Errin|errin)/g, "")
         });
-        if (!json.status) return m.reply(Func.jsonFormat(json));
-        client.reply(m.chat, json.data.description, m);
-        return;
-      }
-
-      // Bagian Bard
-      if (/conversation|extended/.test(m.mtype)) {
-        if (text !== "") {
-          await client.sendReact(m.chat, "🕒", m.key);
-          let json = await Func.fetchJson(
-            `https://aemt.me/bard?text=${encodeURIComponent(text)}`
-          );
-          let data = json.result;
-          if (data === "Request failed!") {
-            const json = await Api.neoxr("/bard", {
-              q: text,
-            });
-            client.reply(m.chat, json.data.message, m);
-          } else {
-            client.reply(m.chat, data, m);
-          }
-        }
-      }
+        client.reply(m.chat, json.data.message, m);
+    } else {
+        client.reply(m.chat, data, m);
+    }
+}
     } catch (e) {
       console.log(e);
       client.reply(m.chat, Func.jsonFormat(e), m);
